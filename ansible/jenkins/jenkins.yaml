@@ -1,0 +1,18 @@
+---
+
+- hosts: all
+  become: true
+  pre_tasks:
+
+    - name: install wget
+      tags: always,master
+      package:
+        name:
+          - wget
+        state: latest
+        update_cache: yes
+
+- hosts: all
+  become: true
+  roles:
+    - base

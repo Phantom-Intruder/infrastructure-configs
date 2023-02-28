@@ -1,0 +1,44 @@
+---
+
+- hosts: all
+  become: true
+  pre_tasks:
+
+  - name: install updates (CentOS)
+    tags: always
+    yum:
+      update_only: yes
+      update_cache: yes
+    when: ansible_distribution == "CentOS"
+
+  - name: install updates (Ubuntu)
+    tags: always
+    apt:
+      upgrade: dist
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: create user jenkins
+    tags: always
+    user:
+      name: jenkins
+      groups: root
+
+  - name: add ssh key for jenkins
+    tags: always
+    authorized_key:
+      user: jenkins
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPZmSgm8cnp816L+ye4fXd17zjueilskgh/xHeVRQbkI jenkins default"
+
+  - name: add sudoers file for jenkins
+    tags: always
+    copy:
+      src: sudoer_jenkins
+      dest: /etc/sudoers.d/jenkins
+      owner: root
+      group: root
+      mode: 0440
