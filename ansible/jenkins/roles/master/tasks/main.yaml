@@ -14,6 +14,35 @@
     name: jenkins
     state: present
 
+- name: generate SSH key "{{ ssh_key_filename }}"
+  openssh_keypair:
+    path: "/home/jenkins/.ssh/{{ ssh_key_filename }}"
+    type: rsa
+    size: 4096
+    state: present
+    force: no
+
+- name: fetch all public ssh keys
+  shell: cat /home/jenkins/.ssh/ansible.pub
+  register: ssh_keys
+  tags:
+    - ssh
+
+- name: check keys
+  debug: msg="{{ ssh_keys.stdout }}"
+  tags:
+    - ssh
+
+- name: deploy keys on all servers
+  authorized_key: user=jenkins key="{{ item[0] }}"
+  delegate_to: "{{ item[1] }}"
+  with_nested:
+    - "{{ ssh_keys.stdout }}"
+    - "{{groups['slave']}}"
+  tags:
+    - ssh
+
+
 - name: Display initial admin password
   command: cat /var/lib/jenkins/secrets/initialAdminPassword
   register: command_output

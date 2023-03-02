@@ -3,7 +3,6 @@
 - hosts: all
   become: true
   pre_tasks:
-
     - name: install Java
       tags: always,master
       package:
