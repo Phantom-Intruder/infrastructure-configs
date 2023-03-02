@@ -1,0 +1,23 @@
+- name: Add jeknins apt key
+  apt_key:
+    url: "https://pkg.jenkins.io/debian-stable/jenkins.io.key"
+    state: present
+
+- name: Add Jenkins repository
+  apt_repository:
+    repo: "deb http://pkg.jenkins.io/debian-stable binary/"
+    state: present
+    update_cache: true
+
+- name: install Jenkins
+  apt:
+    name: jenkins
+    state: present
+
+- name: Display initial admin password
+  command: cat /var/lib/jenkins/secrets/initialAdminPassword
+  register: command_output
+
+- name: Print to console
+  debug:
+    msg: "Jenkins is now running on port 8080, initial admin password is: {{command_output.stdout}}"
