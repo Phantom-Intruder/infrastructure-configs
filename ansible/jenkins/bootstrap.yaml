@@ -32,8 +32,7 @@
     tags: always
     authorized_key:
       user: jenkins
-      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH32Upi/D/et7ZFQlsTGdimImijUawXO4QerH/Yt8PcP ansible
-"
+      key: "<your ssh key here>"
 
   - name: add sudoers file for jenkins
     tags: always
