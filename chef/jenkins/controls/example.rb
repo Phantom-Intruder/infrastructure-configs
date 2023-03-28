@@ -1,11 +1,14 @@
+params = yaml(content: inspec.profile.file('params.yaml')).params
+
+required_modules = params['modules']
+
 control 'required-modules' do
   impact 1.0
   title 'Required modules'
   desc 'The required modules should be installed.'
   describe jenkins do
-    its('modules') { should include jenkins }
-    its('modules') { should include maven }
-    its('modules') { should include alien }
-    its('modules') { should include libaio1 }
+    required_modules.each do |required_module|
+      its('modules') { should include required_module }
+    end
   end
 end
