@@ -1,0 +1,20 @@
+{
+  "CHANGELOG.md": "81e95aad4a1bc4f9b065a033a8b3e5a4",
+  "Gemfile": "6a08ec57f18e97c4ead40a6529d05aa8",
+  "README.md": "f49213f780eb63fc02c44e09afef5f23",
+  "Rakefile": "3044cde52b8cd8508c8400076a66ef11",
+  "files/eplan.sql": "411817113b1c6e2ea07b6f6cfdb38f66",
+  "files/oracle.te": "fe252fdca40b1e00758cbde608502bf0",
+  "files/oracle_env.csh": "558bb41a88eaf10f8a72aba4f81f104b",
+  "files/oracle_env.sh": "d123e61c82b0a361a13dfb92651181a6",
+  "lib/facter/oracle_version.rb": "b586dd6a90fc681ffabbb304f01e7a18",
+  "manifests/init.pp": "5b0f6b5bd6fe41e6b0bfbee2632b63be",
+  "manifests/ldap.pp": "07b8602e299483419f340a749b17a338",
+  "manifests/sqlnet.pp": "57a521478eba193cf20f9f9618014fff",
+  "metadata.json": "e4ab8a28542abacbe063e2c1a743bc0c",
+  "spec/classes/init_spec.rb": "0880d1d1ca8f81a73068ae6d141933ad",
+  "spec/spec_helper.rb": "0db89c9a486df193c0e40095422e19dc",
+  "templates/ldap.ora.erb": "c9b23830183033a6e0fa280df0aaae55",
+  "templates/sqlnet.ora.erb": "97d77dc11b19972055c8286245848ed9",
+  "tests/init.pp": "cffc014a2a53b6738a13a0863207a7e5"
+}
