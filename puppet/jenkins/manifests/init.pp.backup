@@ -1,0 +1,11 @@
+file { '/opt/apt-key.gpg':
+    source => [ "https://pkg.jenkins.io/debian-stable/jenkins.io.key" ]
+  }
+  apt::key { 'jenkins-repository':
+    id => '', 
+    source => 'https://pkg.jenkins.io/debian-stable/jenkins.io.key',
+  }
+  package { 'jenkins':
+    ensure => present,
+  }
+
